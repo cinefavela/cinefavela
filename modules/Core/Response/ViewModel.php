@@ -7,7 +7,7 @@ class ViewModel extends Response
     private $viewEngine;
     
     public function __construct($template, $vars) {
-        $this->viewEngine = \CineFavela\Core\Core::viewEngine();
+        $this->viewEngine = \CineFavela\Core\Core::getViewEngine();
         parent::__construct($template, $vars, null);
     }
     

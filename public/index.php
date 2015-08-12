@@ -9,5 +9,3 @@ $router->always('Accept', array(
         return $viewmodel->render();
     }
 ));
-
-echo $router->run();

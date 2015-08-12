@@ -11,10 +11,12 @@
     "autoload": {
         "psr-4": { 
         	"CineFavela\\": [ "modules/" ],
-        	"CineFavela\\Usuario\\": [ "modules/Usuario/src/", "modules/Usuario/tests" ] 
+        	"CineFavela\\Usuario\\": [ "modules/Usuario/src/", "modules/Usuario/tests" ],
+        	"CineFavela\\Seguranca\\": [ "modules/Seguranca/src/", "modules/Seguranca/tests" ] 
         },
         "files": [
-        	"modules/Usuario/Module.php"
+        	"modules/Usuario/Module.php",
+        	"modules/Seguranca/Module.php"
         ]
     }
 }

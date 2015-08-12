@@ -1,6 +1,6 @@
 <?php 
 
-namespace CineFavela\Usuario\Model;
+namespace CineFavela\Usuario\Entites;
 
 class UsuarioTest extends \PHPUnit_Framework_TestCase {
     

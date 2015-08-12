@@ -3,47 +3,49 @@ namespace CineFavela\Usuario;
 
 class Module
 {
-    
-    private static $container;
 
-    public static function bootstrap(\Respect\Rest\Router $router, \Twig_Environment $twig)
+    private $nome = "usuario";
+    private $versao = "0.1.0";
+    private $container = null;
+
+    public function bootstrap(\Respect\Rest\Router $router, \Twig_Environment $twig)
     {
-      
-        
         self::routeConfig($router);
         self::layoutConfig($twig);
     }
-    
-    public static function getContainer() {
-        if (is_null(self::$container)) {
+
+    private function getContainer()
+    {
+        if (is_null($this->container)) {
             $config = APPLICATION_PATH . '/modules/Usuario/config/config.ini';
-            self::$container = new \Respect\Config\Container($config);
+            $this->container = new \Respect\Config\Container($config);
         }
         
-        return self::$container;
+        return $this->$container;
+    }
+
+    private function getEntityManager()
+    {
+        $container = $this->getContainer();
+        if (! isset($container->mapper)) {
+            $container->mapper = \CineFavela\Core\Core::container()->mapper;
+        }
+        return $container->mapper;
+    }
+
+    private function routeConfig(\Respect\Rest\Router $router)
+    {
+        $router->get('/usuario', 'CineFavela\\Usuario\\Controllers\\UsuarioController');
     }
     
-    public static function getEntityManager() {
-        if(!isset(self::$container->mapper)) {
-            $container = \CineFavela\Core\Core::container();
-            return $container->mapper;
-        }
-        return self::getContainer()->mapper;
-    }
-
-    private static function routeConfig(\Respect\Rest\Router $router)
-    {
-        // Configuração de rotas
-        $router->get('/usuario', 'CineFavela\\Usuario\\Controller\\UsuarioController');
-    }
-
-    private static function layoutConfig(\Twig_Environment $twig)
+    private function layoutConfig(\Twig_Environment $twig)
     {
         // Configuração de templates
         $loader = $twig->getLoader();
-        $loader->addPath(APPLICATION_PATH . '/modules/Usuario/view/');
+        $loader->addPath(APPLICATION_PATH . '/modules/Usuario/template/');
     }
 }
 
 $container = \CineFavela\Core\Core::container();
-\CineFavela\Usuario\Module::bootstrap($container->router, $container->twig);
+$module = new \CineFavela\Usuario\Module();
+$module->bootstrap($container->router, $container->twig);

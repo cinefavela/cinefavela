@@ -1,5 +1,5 @@
-CREATE TABLE usuario (
-	id int primary key,
-	nome varchar(120),
-	senha varchar(32)
+CREATE TABLE module (
+	nome varchar(30) not null,
+	versao varchar(15) not null,
+	primary key (nome)
 );

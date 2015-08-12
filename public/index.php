@@ -2,6 +2,7 @@
 
 require('../bootstrap.php');
 
-$container = new Respect\Config\Container(APPLICATION_PATH . '/config/config.ini');
+$container = \CineFavela\Core\Core::container();
 $router = $container->router;
+
 echo $router->run();

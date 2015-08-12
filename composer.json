@@ -1,0 +1,16 @@
+{
+    "require": {
+        "respect/rest": "^0.6.0",
+        "respect/config": "^2.0",
+        "respect/relational": "^0.8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8"
+    },
+    "autoload": {
+        "psr-4": { "CineFavela\\": [ "modules/" ] },
+        "files": [
+        	"modules/Usuario/Module.php"
+        ]
+    }
+}

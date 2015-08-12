@@ -16,7 +16,12 @@ class Core
         return self::$container;
     }
     
+    public static function entityManager() {
+        return self::container()->mapper;
+    }
+    
     public static function viewEngine() {
         return self::container()->twig;
     }
+    
 }

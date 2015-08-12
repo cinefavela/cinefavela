@@ -4,7 +4,11 @@
 		<meta charset="utf-8">
 	</head>
 	<body>
-		<h1>Usuario</h1>
-		{{ nome }}
+		<h1>Usuarios</h1>
+		<ul>
+			{% for usuario in usuarios %}
+				<li>{{ usuario.nome }}</li> 
+			{% endfor %}
+		</ul>
 	</body>
 </html>

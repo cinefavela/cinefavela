@@ -15,4 +15,8 @@ class Core
         
         return self::$container;
     }
+    
+    public static function viewEngine() {
+        return self::container()->twig;
+    }
 }

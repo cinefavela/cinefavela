@@ -7,11 +7,11 @@ use CineFavela\Core\Response\ViewModel;
 class UsuarioController implements Routable
 {
 
-    private $mapper;
+    private $entityManager;
 
     public function __construct()
     {
-        $this->mapper = \CineFavela\Core\Core::container()->mapper;
+        $this->entityManager = \CineFavela\Core\Application::getEntityManager();
     }
 
     public function get()

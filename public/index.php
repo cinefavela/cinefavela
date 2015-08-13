@@ -1,7 +1,8 @@
 <?php
 require ('../bootstrap.php');
 
-$container = \CineFavela\Core\Core::container();
+\CineFavela\Core\Application::init();
+$container = \CineFavela\Core\Application::getContainer();
 
 $router = $container->router;
 $router->always('Accept', array(

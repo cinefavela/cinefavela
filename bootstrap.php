@@ -18,4 +18,5 @@ switch (APPLICATION_ENVIRONMENT) {
 
 require_once(APPLICATION_PATH . '/vendor/autoload.php');
 
+
 ?>

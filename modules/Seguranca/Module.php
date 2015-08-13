@@ -3,36 +3,31 @@ namespace CineFavela\Seguranca;
 
 class Module extends \CineFavela\Core\Module\Module
 {
-    
-    const NOME = "seguranca";
-    const VERSAO = "0.1.1";
 
     public function __construct()
     {
-        parent::__construct(self::NOME, self::VERSAO);
-    }
-    
-    public function init() {
-        $this->routeConfig($this->getContainer()->router);
+        parent::__construct("seguranca", "0.1.0");
     }
 
-    public function getEntityManager()
+    public function getTemplateConfig()
     {
-        $container = $this->getContainer();
-        
-        if (! isset($container->mapper)) {
-            $container = \CineFavela\Core\Core::container();
-            return $container->mapper;
-        }
-        return $container->mapper;
+        return array(
+            "templateDir" => array(
+                APPLICATION_PATH . "/modules/" . ucfirst($this->getName()) . "/template/"
+            )
+        );
     }
 
-    private function routeConfig(\Respect\Rest\Router $router)
+    public function getRouteConfig()
     {
-        // Configuração de rotas
-        $router->get('/login', 'CineFavela\\Seguranca\\Controllers\\LoginController');
-        $router->get('/logout', 'CineFavela\\Seguranca\\Controllers\\LogoutController');
+        return array(
+            "routes" => array(
+                array(
+                    "method" => "get",
+                    "path" => "/login",
+                    "controller" => "CineFavela\\Seguranca\\Controllers\\LoginController"
+                )
+            )
+        );
     }
 }
-
-\CineFavela\Core\Core::getModuleManager()->register(new \CineFavela\Seguranca\Module());
